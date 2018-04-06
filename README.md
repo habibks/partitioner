@@ -3,16 +3,12 @@ Partitioner
 
 What is it?
 -------------
-
  
 Static utility method that divide a list in sublists with a desired size.
 Example, partitioning a list containing [1,2,3,4,5] with a size of 2 return [1,2],[3,4],[5].
 
-Throw IllegalArgumentException when List is null or size is less or equal to zero.
-
 How to use
 -------------  
-
   ```
  List<List<Element>> result = Partitioner.partition(list<Element>, size);
   ```
@@ -36,7 +32,7 @@ or
   ```
 gradlew.bat run
   ```
-
+  
 Release
 -------------
    
