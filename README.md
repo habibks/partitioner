@@ -18,7 +18,7 @@ Throw IllegalArgumentException if List is null or size is less or equal to zero.
 How to start
 -------------
 
-If you just want to mess around with the API a bit the default configuration has no external dependencies (well, except Java 8).
+If you just want to mess around with the code a bit, there is no external dependencies (except Java 8).
 
 If you have gradle, just run
   ```
