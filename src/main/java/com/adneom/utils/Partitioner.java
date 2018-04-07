@@ -11,10 +11,10 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class Partitioner {
 
-    public static <T> List<List<T>> partition(List<T> list, int size) {
+    public static <T> List<List<T>> partition(List<T> list, int partitionSize) {
         checkNotNullList(list);
-        checkSizeGreaterThanZero(size);
-        return getSubLists(list, size);
+        checkSizeGreaterThanZero(partitionSize);
+        return getSubLists(list, partitionSize);
     }
 
     private static <T> void checkNotNullList(List<T> list) {
@@ -29,15 +29,15 @@ public class Partitioner {
         }
     }
 
-    private static <T> List<List<T>> getSubLists(List<T> list, int size) {
-        Map<Integer, List<T>> subListByIndex = groupBySubListIndex(list, size);
+    private static <T> List<List<T>> getSubLists(List<T> list, int partitionSize) {
+        Map<Integer, List<T>> subListByIndex = groupBySubListIndex(list, partitionSize);
         return new ArrayList<>(subListByIndex.values());
     }
 
-    private static <T> Map<Integer, List<T>> groupBySubListIndex(List<T> list, int size) {
+    private static <T> Map<Integer, List<T>> groupBySubListIndex(List<T> list, int partitionSize) {
         AtomicInteger index = new AtomicInteger(0);
         return list.stream()
-                .collect(groupingBy(it -> index.getAndIncrement() / size));
+                .collect(groupingBy(it -> index.getAndIncrement() / partitionSize));
     }
 
 
