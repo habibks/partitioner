@@ -14,39 +14,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 public class PartitionerTest {
 
     @Test
-    public void should_throw_illegal_argument_exception_when_list_is_null() {
-        List<Integer> list = null;
-        int size = 2;
-
-        Throwable thrown = catchThrowable(() -> partition(list, size));
-
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                .withFailMessage("List must not be null");
-    }
-
-    @Test
-    public void should_throw_illegal_argument_exception_when_size_is_equal_to_zero() {
-        List<Integer> list = new ArrayList<>();
-        int size = 0;
-
-        Throwable thrown = catchThrowable(() -> partition(list, size));
-
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                .withFailMessage("Size must be greater than zero");
-    }
-
-    @Test
-    public void should_throw_illegal_argument_exception_when_size_is_less_then_zero() {
-        List<Integer> list = new ArrayList<>();
-        int size = -2;
-
-        Throwable thrown = catchThrowable(() -> partition(list, size));
-
-        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                .withFailMessage("Size must be greater than zero");
-    }
-
-    @Test
     public void should_return_empty_list_when_list_is_empty() {
         List<Integer> list = new ArrayList<>();
         int size = 2;
@@ -94,5 +61,38 @@ public class PartitionerTest {
         assertThat(result.size()).isEqualTo(2);
         assertThat(result.get(0)).containsExactly("1","2","3");
         assertThat(result.get(1)).containsExactly("4","5");
+    }
+
+    @Test
+    public void should_throw_illegal_argument_exception_when_list_is_null() {
+        List<Integer> list = null;
+        int size = 2;
+
+        Throwable thrown = catchThrowable(() -> partition(list, size));
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                .withFailMessage("List must not be null");
+    }
+
+    @Test
+    public void should_throw_illegal_argument_exception_when_size_is_equal_to_zero() {
+        List<Integer> list = new ArrayList<>();
+        int size = 0;
+
+        Throwable thrown = catchThrowable(() -> partition(list, size));
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                .withFailMessage("Size must be greater than zero");
+    }
+
+    @Test
+    public void should_throw_illegal_argument_exception_when_size_is_less_then_zero() {
+        List<Integer> list = new ArrayList<>();
+        int size = -2;
+
+        Throwable thrown = catchThrowable(() -> partition(list, size));
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                .withFailMessage("Size must be greater than zero");
     }
 }

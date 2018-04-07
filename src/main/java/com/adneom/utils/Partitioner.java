@@ -4,6 +4,7 @@ package com.adneom.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -29,11 +30,14 @@ public class Partitioner {
     }
 
     private static <T> List<List<T>> getSubLists(List<T> list, int size) {
+        Map<Integer, List<T>> subListByIndex = groupBySubListIndex(list, size);
+        return new ArrayList<>(subListByIndex.values());
+    }
+
+    private static <T> Map<Integer, List<T>> groupBySubListIndex(List<T> list, int size) {
         AtomicInteger index = new AtomicInteger(0);
-        Collection<List<T>> partitions = list.stream()
-                .collect(groupingBy(it -> index.getAndIncrement() / size))
-                .values();
-        return new ArrayList<>(partitions);
+        return list.stream()
+                .collect(groupingBy(it -> index.getAndIncrement() / size));
     }
 
 
