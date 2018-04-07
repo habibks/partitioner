@@ -41,7 +41,7 @@ The most recent release is [Partitioner 1.0], released 2018-04-06.
 The Maven group ID is `com.adneom.utils`, and the artifact ID is `partitioner`. Use
 version `1.0`.
    
-To add a dependency on Partitioner using Maven, use the following:
+To add a dependency using Maven:
    
 ```xml
    <dependency>
